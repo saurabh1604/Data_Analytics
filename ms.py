@@ -10,14 +10,14 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
+from scipy import stats
 
 # For statistical tests and machine learning models
 from sklearn.linear_model import LinearRegression  # For regression models
 from sklearn.datasets import make_classification  # For classification dataset generation
 from sklearn.cluster import KMeans  # For clustering models
 # Import statsmodels for statistical analysis
-import statsmodels.api as sm
-from statsmodels.stats.weightstats import ttest_ind
+
 
 
 # App Configurations
@@ -474,8 +474,8 @@ elif page == "Statistical Learning":
         Now, let's perform a t-test to check if there is a significant difference in the average mileage of cars produced at the two plants (Manesar and Pune).
     """)
 
-    # Perform a t-test using statsmodels
-    t_stat, p_val = sm.stats.ttest_ind(mileage_manesar, mileage_pune)
+    # Perform a t-test using scipy
+    t_stat, p_val = stats.ttest_ind(mileage_manesar, mileage_pune)
 
     st.write(f"**t-Statistic:** {t_stat:.2f}")
     st.write(f"**p-Value:** {p_val:.5f}")
